@@ -105,7 +105,7 @@ public class EchoClient {
                                  protected void initChannel(SocketChannel ch)
                                          throws Exception {
                                      ch.pipeline()
-                                             .addLast(new IdleStateHandler(5, 5,5))
+                                             .addLast(new IdleStateHandler(6, 0, 0, TimeUnit.SECONDS))
                                              .addLast(new StringDecoder())
                                              .addLast(new StringEncoder()).addLast(mEchoClientHandler);
                                  }
@@ -124,7 +124,7 @@ public class EchoClient {
                 nioEventLoopGroup.shutdownGracefully().sync();
                 if (Config.TCP_CONN_AGAIN) {
                     try {
-                        Log.i("LLL", "finally------------");
+                        Log.i("LLL", "连接失败，准备重新，请倒数5个数-------------");
                         TimeUnit.SECONDS.sleep(5);
                         try {
                             //5之后重连

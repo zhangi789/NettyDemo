@@ -48,14 +48,12 @@ public class EchoClientHandler extends SimpleChannelInboundHandler<String> {
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
 
-
         Log.i("LLL", "onExceptionTip " + cause.getMessage());
-        call.onMessage(ctx,Config.TCP_CONN_Exception_MSG,"！！！异常消息提示 "+cause.getMessage());
+        call.onMessage(ctx,Config.TCP_CONN_Exception_MSG,"异常消息提示,请查看Log");
         // 释放资源
         ctx.close();
 
     }
-
     //客户端断开
     @Override
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
@@ -64,7 +62,6 @@ public class EchoClientHandler extends SimpleChannelInboundHandler<String> {
         if (ctx != null)
             ctx.close();
     }
-
     /**
      *    为了减少服务器端压力  默认服务器5s没有处理   服务端可以认为客户端挂了
      * @param ctx
@@ -76,7 +73,6 @@ public class EchoClientHandler extends SimpleChannelInboundHandler<String> {
         if (evt instanceof IdleStateEvent) {
             IdleStateEvent event = (IdleStateEvent) evt;
             if (event.state() == IdleState.ALL_IDLE) {
-                ctx.writeAndFlush("心跳");
                 Log.i("LLL", "------IdleState.ALL_IDLE------");
 
                 if (Config.COUNT < 1 && Config.TCP_CONN_AGAIN) {

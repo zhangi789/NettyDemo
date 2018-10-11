@@ -11,10 +11,15 @@ import com.shanutec.cn.kit.EchoClient;
 
 import io.netty.channel.ChannelHandlerContext;
 
+/**
+ * host 和port  请填写自己真实项目参数
+ */
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
-    String host = "192.168.0.104";
-    int port = 5010;
+   // host = "52.82.57.48";
+    String host = "";
+    //port=8000
+    int port = 0;
 
     private Button  btn_conn;
     private Button  btn_break;
