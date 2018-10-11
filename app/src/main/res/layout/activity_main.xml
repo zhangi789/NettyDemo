@@ -21,6 +21,4 @@
         android:layout_height="46dp"
         android:text="断开"
         />
-
-
 </RelativeLayout>

@@ -16,7 +16,6 @@ public class Config {
     public static boolean TCP_CONN_AGAIN = true;
     /**
      * Flag
-     * 0   表示连接失败
      * 1   表示连接成功
      * 2   表示正常接受服务器端数据
      * 3   表示Tcp 连接异常的消息提示
@@ -32,7 +31,6 @@ public class Config {
 
     //心跳连接次数
     public static int COUNT = 0;
-    public static ChannelHandlerContext ctxs;
     //是否是否通过验证
     public static boolean IS_VERIFY = false;
     //是否加密
